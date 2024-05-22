@@ -1,0 +1,59 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.idea/
+
+# C extensions
+*.so
+*.pyc
+*~
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+
+downloads/
+eggs/
+.eggs/
+parts/
+volumes/filestore
+volumes/sessions
+
+var/
+volumes/
+certbot/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+*.manifest
+*.spec
+
+# Openssl Stuff
+*.key
+*.crt
+*.csr
+
+# Openssl Stuff
+*.key
+*.crt
+*.csr
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+nginx/nginx.conf
+
+odoo/
+odoo.conf/
+
+

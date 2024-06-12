@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="service_menu_root"
+              name="Order Service"
+              sequence="10">
+
+        <menuitem id="service_menu" name="Services" sequence="10">
+            <menuitem id="menu_formulario"
+                      name="New Service Order"
+                      action="service_order_action"
+                      sequence="20"/>
+        </menuitem>
+
+    </menuitem>
+</odoo>
+
+
+
+

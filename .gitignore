@@ -54,6 +54,6 @@ venv.bak/
 nginx/nginx.conf
 
 odoo/
-odoo.conf/
+odoo.conf
 
 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="service_order_action" model="ir.actions.act_window">
+        <field name="name">Service</field>
+        <field name="res_model">service.order</field>
+        <field name="view_mode">form,tree,pivot</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            No service order found. Let's create one!
+          </p>
+        </field>
+    </record>
+
+    <record id="service_order_pivot_view" model="ir.ui.view">
+        <field name="name">service.order.pivot</field>
+        <field name="model">service.order</field>
+        <field name="arch" type="xml">
+            <pivot string="Service Orders" sample="1">
+                <field name="date_issue" type="row"/>
+                <field name="amount_total" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="service_order_action_view_pivot" model="ir.actions.act_window.view">
+        <field name="sequence" eval="5"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="service_order_pivot_view"/>
+        <field name="act_window_id" ref="service_order_action"/>
+    </record>
+
+    <record id="service_order_tree_view" model="ir.ui.view">
+        <field name="name">service.order.tree</field>
+        <field name="model">service.order</field>
+        <field name="arch" type="xml">
+             <tree string="Sales Orders" sample="1">
+                <field name="partner_id" type="row"/>
+                <field name="amount_total" />
+             </tree>
+        </field>
+    </record>
+
+    <record id="service_order_action_tree_list" model="ir.actions.act_window.view">
+        <field name="sequence" eval="5"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="service_order_tree_view"/>
+        <field name="act_window_id" ref="service_order_action"/>
+    </record>
+
+     <record id="service_order_view" model="ir.ui.view">
+            <field name="name">Service Order View</field>
+            <field name="model">service.order</field>          
+            <field name="arch" type="xml">
+
+              <form>
+                <header>
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_colors="{ 'open': '#28a745','progress':  '#ffff66','closed': '#ff9900','cancel': '#28a745'}" />
+                    />
+                </header>
+                 <group string="Service Order">
+                    <!-- <field name="seller" type="row"/> -->
+                    <field name="partner_id" />
+                    <field name="date_issue" />
+                </group>
+
+                <group string="Service">
+                    <field name="service_id" domain="[('detailed_type', '=', 'service')]"/>
+                </group>
+
+                <group string="Observation">
+                    <field name="obs" />
+                </group>
+
+                <group string="Total">
+                    <field name="amount_total" sum="Total" widget="monetary" readonly="1"/>
+                </group>
+
+              </form>
+            </field>
+     </record>
+
+
+    <record id="service_order_tree" model="ir.ui.view">
+            <field name="name">service.order.tree</field>
+            <field name="model">service.order</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree string="Service Order" class="o_sale_order">
+<!--                      decoration-muted="state=='cancel'" sample="1">-->
+                    <field name="partner_id"  type="row"/>
+                    <field name="date_issue" widget="date" optional="show"/>
+                    <field name="obs" decoration-bf="2"/>
+                   <field name="state" string="Status"/>
+                </tree>
+            </field>
+        </record>
+
+
+    <record id="service_order_action_view" model="ir.actions.act_window">
+        <field name="name">Requests for Quotation</field>
+        <field name="res_model">service.order</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="service_order.service_order_view"/>
+<!--        <field name="act_window_id" ref="service_order_action"/>-->
+         <field name="target">current</field>
+    </record>
+
+    <record id="service_order_action_view_tree" model="ir.actions.act_window">
+        <field name="name">Requests for Quotation</field>
+        <field name="res_model">service.order</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="service_order.service_order_tree"/>
+<!--        <field name="act_window_id" ref="service_order_action"/>-->
+        <field name="target">main</field>
+    </record>
+
+
+
+</odoo>
+
+
+
+
